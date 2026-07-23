@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-sidebar: #0f1a2e;
+  --color-sidebar-accent: #1a2d4a;
+  --color-accent: #2d6fb4;
+  --color-accent-light: #e8f0f8;
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #8899aa;
+  --color-border: #e2e8f0;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* ── Print ── */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .sidebar {
+    position: static !important;
+    width: 30% !important;
+    min-height: 100vh;
+  }
+  .main-content {
+    overflow: visible !important;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ── Smooth scroll ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Timeline line ── */
+.timeline-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent) 0%,
+    var(--color-border) 100%
+  );
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+/* ── Bullet animation ── */
+.experience-card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.experience-card:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ── Sidebar gradient ── */
+.sidebar-bg {
+  background: linear-gradient(160deg, #0f1a2e 0%, #162544 50%, #1a3056 100%);
+}
