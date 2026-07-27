@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import data from "@/data/resume";
 import ResumeExportTemplate from "@/components/BilingualResumePDF";
 
@@ -34,38 +34,31 @@ type Lang = "zh" | "en";
 export default function HomePage() {
   const [lang, setLang] = useState<Lang>("zh");
   const [exporting, setExporting] = useState(false);
-  const pdfRef = useRef<HTMLDivElement>(null);
 
   const d = data[lang];
   const t = SECTION_TITLES[lang];
 
   const handleExportPDF = async () => {
     setExporting(true);
+
+    // 等待 React 渲染完成（模板挂载到 DOM）
+    await new Promise((r) => setTimeout(r, 200));
+
     try {
-      const html2pdfModule = await import("html2pdf.js");
-      const html2pdf = html2pdfModule.default as (el: HTMLElement, opts?: Record<string, unknown>) => Promise<void>;
-      const el = pdfRef.current;
+      const el = document.getElementById("pdf-template");
       if (!el) return;
 
+      const html2pdf = (await import("html2pdf.js")).default;
       const opt = {
         margin: 0,
         filename: `Nick_Jiang_Resume_${new Date().toISOString().slice(0, 10)}.pdf`,
-        image: { type: "jpeg", quality: 0.95 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          onclone: (clonedDoc: Document) => {
-            const tpl = clonedDoc.getElementById("pdf-template");
-            if (tpl) {
-              tpl.style.opacity = "1";
-              tpl.style.position = "relative";
-            }
-          },
-        },
-        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        image: { type: "jpeg" as const, quality: 0.95 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" as const },
+        pagebreak: { mode: ["avoid-all", "css", "legacy"] },
       };
 
-      await html2pdf(el, opt);
+      await html2pdf().set(opt).from(el).save();
     } finally {
       setExporting(false);
     }
@@ -163,33 +156,24 @@ export default function HomePage() {
           </h2>
 
           <div className="relative">
-            {/* Timeline line */}
             <div className="timeline-line hidden lg:block" />
-
             <div className="space-y-10 lg:space-y-12">
               {d.experiences.map((exp, idx) => (
                 <div key={idx} className="relative lg:pl-8 experience-card">
-                  {/* Timeline dot */}
                   <div
                     className={`timeline-dot hidden lg:block ${
                       idx === 0 ? "!w-3.5 !h-3.5 !left-[-6px] !top-[4px]" : ""
                     }`}
                   />
-
-                  {/* Period badge */}
                   <span className="inline-block text-xs font-medium text-accent bg-accent-light rounded-full px-3 py-1 mb-2">
                     {exp.period}
                   </span>
-
-                  {/* Title + Company */}
                   <h3 className="text-lg font-semibold text-text-primary mt-1">
                     {exp.title}
                   </h3>
                   <p className="text-sm text-accent font-medium mb-3">
                     {exp.company}
                   </p>
-
-                  {/* Bullets */}
                   <ul className="space-y-2">
                     {exp.bullets.map((b, bi) => (
                       <li
@@ -206,15 +190,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Footer */}
           <footer className="mt-16 pt-8 border-t border-border text-xs text-text-muted no-print">
             <p>© {new Date().getFullYear()} Nick Jiang. All rights reserved.</p>
           </footer>
         </div>
       </main>
 
-      {/* Hidden bilingual resume for PDF export */}
-      <ResumeExportTemplate ref={pdfRef} data={d} lang={lang} />
+      {/* ═══ PDF Export Overlay (only rendered during export) ═══ */}
+      {exporting && <ResumeExportTemplate data={d} lang={lang} />}
     </div>
   );
 }
