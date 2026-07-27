@@ -9,6 +9,11 @@ const TOGGLE_LABELS: Record<"zh" | "en", string> = {
   en: "中文 →",
 };
 
+const PDF_LABELS: Record<"zh" | "en", string> = {
+  zh: "导出PDF简历",
+  en: "export as PDF file",
+};
+
 const SECTION_TITLES: Record<"zh" | "en", Record<string, string>> = {
   zh: {
     contact: "联系方式",
@@ -80,7 +85,7 @@ export default function HomePage() {
                          hover:bg-white/10 hover:border-white/40 transition-colors cursor-pointer
                          disabled:opacity-50 disabled:cursor-wait"
             >
-              {exporting ? "⏳" : "📄"} PDF
+              {exporting ? "⏳ " : ""}{PDF_LABELS[lang]}
             </button>
             <button
               onClick={() => setLang(lang === "zh" ? "en" : "zh")}
