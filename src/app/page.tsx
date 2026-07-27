@@ -50,14 +50,14 @@ export default function HomePage() {
 
           {/* Photo */}
           <div className="flex justify-center mb-8">
-            <div className="relative w-32 h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
+            <div className="relative w-[166px] h-[166px] lg:w-[187px] lg:h-[187px] rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
               <Image
                 src="/photo.jpg"
                 alt={lang === "zh" ? "蒋卢" : "Nick Jiang"}
                 fill
                 className="object-cover"
                 priority
-                sizes="(max-width: 1024px) 128px, 144px"
+                sizes="(max-width: 1024px) 166px, 187px"
               />
             </div>
           </div>
