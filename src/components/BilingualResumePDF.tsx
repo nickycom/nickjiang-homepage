@@ -4,24 +4,34 @@ import { forwardRef } from "react";
 import type { ResumeData } from "@/data/resume";
 
 type Props = {
-  zh: ResumeData;
-  en: ResumeData;
+  data: ResumeData;
+  lang: "zh" | "en";
 };
 
-const SECTION_ZH: Record<string, string> = {
-  education: "教育背景",
-  about: "关于我",
-  experience: "工作经历",
+const LABELS: Record<"zh" | "en", Record<string, string>> = {
+  zh: {
+    contact: "联系方式",
+    education: "教育背景",
+    about: "关于我",
+    experience: "工作经历",
+  },
+  en: {
+    contact: "Contact",
+    education: "Education",
+    about: "About Me",
+    experience: "Work Experience",
+  },
 };
 
-const SECTION_EN: Record<string, string> = {
-  education: "Education",
-  about: "About Me",
-  experience: "Work Experience",
-};
+/** 与网站一致的侧边栏渐变背景 */
+const SIDEBAR_BG =
+  "linear-gradient(160deg, #0f1a2e 0%, #162544 50%, #1a3056 100%)";
+const ACCENT = "#2d6fb4";
+const ACCENT_LIGHT = "#e8f0f8";
 
-const BilingualResumePDF = forwardRef<HTMLDivElement, Props>(
-  function BilingualResumePDF({ zh, en }, ref) {
+const ResumeExportTemplate = forwardRef<HTMLDivElement, Props>(
+  function ResumeExportTemplate({ data: d, lang }, ref) {
+    const t = LABELS[lang];
     const photoUrl =
       typeof window !== "undefined"
         ? new URL("photo.jpg", window.location.href).href
@@ -31,190 +41,286 @@ const BilingualResumePDF = forwardRef<HTMLDivElement, Props>(
       <div
         ref={ref}
         id="pdf-template"
-        className="absolute opacity-0 pointer-events-none"
-        style={{ width: "1122px", minHeight: "1587px", top: 0, left: 0 }}
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          top: 0,
+          width: "794px",
+          background: "#fff",
+          fontFamily: "system-ui, -apple-system, sans-serif",
+        }}
       >
-        {/* Document for PDF capture — A3 landscape ~ A4 x2 */}
-        <div
-          className="bg-white text-gray-900 p-12"
-          style={{
-            width: "1122px",
-            fontFamily: "system-ui, sans-serif",
-          }}
-        >
-          {/* ═══════ Header ═══════ */}
-          <div className="flex items-center gap-6 mb-8 pb-6 border-b-2 border-gray-300">
-            <img
-              src={photoUrl}
-              alt="Nick Jiang"
-              className="w-16 h-16 rounded-full object-cover shrink-0"
-              crossOrigin="anonymous"
-            />
-            <div className="flex-1">
-              <h1 className="text-2xl font-bold tracking-tight">
-                {zh.name} / {en.name}
+        <div style={{ display: "flex", minHeight: "1123px" }}>
+          {/* ═══════ Sidebar ═══════ */}
+          <div
+            style={{
+              width: "260px",
+              background: SIDEBAR_BG,
+              color: "#fff",
+              padding: "40px 28px",
+              display: "flex",
+              flexDirection: "column",
+              flexShrink: 0,
+            }}
+          >
+            {/* Photo */}
+            <div style={{ textAlign: "center", marginBottom: "24px" }}>
+              <img
+                src={photoUrl}
+                alt={d.name}
+                crossOrigin="anonymous"
+                style={{
+                  width: "96px",
+                  height: "96px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  border: "2px solid rgba(255,255,255,0.2)",
+                }}
+              />
+            </div>
+
+            {/* Name & Title */}
+            <div style={{ marginBottom: "28px" }}>
+              <h1
+                style={{
+                  fontSize: "22px",
+                  fontWeight: 700,
+                  letterSpacing: "-0.5px",
+                  margin: "0 0 4px",
+                }}
+              >
+                {d.name}
               </h1>
-              <p className="text-lg text-gray-500 mt-0.5">
-                {zh.title} / {en.title}
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "rgba(255,255,255,0.7)",
+                  fontWeight: 500,
+                  margin: 0,
+                }}
+              >
+                {d.title}
               </p>
             </div>
-            <div className="text-right text-sm text-gray-600 shrink-0">
-              <p>{zh.phone}</p>
-              <p>{zh.email}</p>
+
+            {/* Contact */}
+            <SectionTitle label={t.contact} />
+            <div
+              style={{
+                fontSize: "12px",
+                color: "rgba(255,255,255,0.8)",
+                lineHeight: 1.6,
+                marginBottom: "22px",
+              }}
+            >
+              <p style={{ margin: 0 }}>{d.phone}</p>
+              <p style={{ margin: 0, wordBreak: "break-all" }}>{d.email}</p>
             </div>
-          </div>
 
-          {/* ═══════ Two Columns ═══════ */}
-          <div className="flex gap-8">
-            {/* ── Left: Chinese ── */}
-            <div className="flex-1 min-w-0">
-              <ColumnHeader label="简体中文" />
+            {/* Education */}
+            <SectionTitle label={t.education} />
+            <div style={{ fontSize: "12px", marginBottom: "22px" }}>
+              <p style={{ color: "rgba(255,255,255,0.5)", margin: 0 }}>
+                {d.education.period}
+              </p>
+              <p
+                style={{
+                  color: "rgba(255,255,255,0.9)",
+                  fontWeight: 500,
+                  margin: "2px 0 0",
+                }}
+              >
+                {d.education.degree}
+              </p>
+              <p
+                style={{ color: "rgba(255,255,255,0.7)", margin: "1px 0 0" }}
+              >
+                {d.education.major}
+              </p>
+              <p
+                style={{ color: "rgba(255,255,255,0.7)", margin: "1px 0 0" }}
+              >
+                {d.education.school}
+              </p>
+            </div>
 
-              {/* Education */}
-              <Section title={SECTION_ZH.education}>
-                <p className="text-sm text-gray-500">{zh.education.period}</p>
-                <p className="text-sm font-medium">{zh.education.degree}</p>
-                <p className="text-sm text-gray-600">{zh.education.major}</p>
-                <p className="text-sm text-gray-600">{zh.education.school}</p>
-              </Section>
-
-              {/* About */}
-              <Section title={SECTION_ZH.about}>
-                <ul className="space-y-0.5">
-                  {zh.about.map((item, i) => (
-                    <li key={i} className="text-sm text-gray-600 flex gap-1.5">
-                      <span>•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Section>
-
-              {/* Experiences */}
-              <Section title={SECTION_ZH.experience}>
-                {zh.experiences.map((exp, i) => (
-                  <div
-                    key={i}
-                    className={i > 0 ? "mt-3 pt-3 border-t border-gray-100" : ""}
-                  >
-                    <span className="text-xs text-gray-400">{exp.period}</span>
-                    <p className="text-sm font-semibold mt-0.5">
-                      {exp.title}
-                      <span className="font-normal text-gray-500">
-                        {" "}
-                        · {exp.company}
-                      </span>
-                    </p>
-                    <ul className="mt-1 space-y-0.5">
-                      {exp.bullets.map((b, bi) => (
-                        <li
-                          key={bi}
-                          className="text-xs text-gray-600 flex gap-1"
-                        >
-                          <span className="shrink-0">•</span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+            {/* About */}
+            <div style={{ marginTop: "auto" }}>
+              <SectionTitle label={t.about} />
+              <ul
+                style={{
+                  fontSize: "12px",
+                  color: "rgba(255,255,255,0.7)",
+                  padding: 0,
+                  margin: 0,
+                  listStyle: "none",
+                }}
+              >
+                {d.about.map((item, i) => (
+                  <li key={i} style={{ marginBottom: "4px" }}>
+                    {item}
+                  </li>
                 ))}
-              </Section>
+              </ul>
             </div>
+          </div>
 
-            {/* ── Divider ── */}
-            <div className="w-px bg-gray-200 shrink-0" />
+          {/* ═══════ Main Content ═══════ */}
+          <div style={{ flex: 1, padding: "40px 32px" }}>
+            <h2
+              style={{
+                fontSize: "13px",
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                color: "#8899aa",
+                fontWeight: 500,
+                margin: "0 0 32px",
+              }}
+            >
+              {t.experience}
+            </h2>
 
-            {/* ── Right: English ── */}
-            <div className="flex-1 min-w-0">
-              <ColumnHeader label="English" />
+            {/* Timeline */}
+            <div style={{ position: "relative", paddingLeft: "24px" }}>
+              {/* Timeline line */}
+              <div
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  bottom: 0,
+                  width: "2px",
+                  background: `linear-gradient(to bottom, ${ACCENT} 0%, #e2e8f0 100%)`,
+                }}
+              />
 
-              {/* Education */}
-              <Section title={SECTION_EN.education}>
-                <p className="text-sm text-gray-500">{en.education.period}</p>
-                <p className="text-sm font-medium">{en.education.degree}</p>
-                <p className="text-sm text-gray-600">{en.education.major}</p>
-                <p className="text-sm text-gray-600">{en.education.school}</p>
-              </Section>
-
-              {/* About */}
-              <Section title={SECTION_EN.about}>
-                <ul className="space-y-0.5">
-                  {en.about.map((item, i) => (
-                    <li key={i} className="text-sm text-gray-600 flex gap-1.5">
-                      <span>•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Section>
-
-              {/* Experiences */}
-              <Section title={SECTION_EN.experience}>
-                {en.experiences.map((exp, i) => (
+              {d.experiences.map((exp, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    position: "relative",
+                    marginBottom: idx < d.experiences.length - 1 ? "28px" : 0,
+                  }}
+                >
+                  {/* Timeline dot */}
                   <div
-                    key={i}
-                    className={i > 0 ? "mt-3 pt-3 border-t border-gray-100" : ""}
+                    style={{
+                      position: "absolute",
+                      left: "-29px",
+                      top: idx === 0 ? "4px" : "4px",
+                      width: idx === 0 ? "14px" : "10px",
+                      height: idx === 0 ? "14px" : "10px",
+                      borderRadius: "50%",
+                      background: ACCENT,
+                      border: "2px solid #fff",
+                      boxShadow: `0 0 0 2px ${ACCENT}`,
+                    }}
+                  />
+
+                  {/* Period badge */}
+                  <span
+                    style={{
+                      display: "inline-block",
+                      fontSize: "11px",
+                      fontWeight: 500,
+                      color: ACCENT,
+                      background: ACCENT_LIGHT,
+                      borderRadius: "999px",
+                      padding: "2px 10px",
+                      marginBottom: "6px",
+                    }}
                   >
-                    <span className="text-xs text-gray-400">{exp.period}</span>
-                    <p className="text-sm font-semibold mt-0.5">
-                      {exp.title}
-                      <span className="font-normal text-gray-500">
-                        {" "}
-                        · {exp.company}
-                      </span>
-                    </p>
-                    <ul className="mt-1 space-y-0.5">
-                      {exp.bullets.map((b, bi) => (
-                        <li
-                          key={bi}
-                          className="text-xs text-gray-600 flex gap-1"
-                        >
-                          <span className="shrink-0">•</span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </Section>
+                    {exp.period}
+                  </span>
+
+                  {/* Title + Company */}
+                  <h3
+                    style={{
+                      fontSize: "15px",
+                      fontWeight: 600,
+                      color: "#1a1a2e",
+                      margin: "4px 0 0",
+                    }}
+                  >
+                    {exp.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "12px",
+                      color: ACCENT,
+                      fontWeight: 500,
+                      margin: "2px 0 8px",
+                    }}
+                  >
+                    {exp.company}
+                  </p>
+
+                  {/* Bullets */}
+                  <ul
+                    style={{
+                      padding: 0,
+                      margin: 0,
+                      listStyle: "none",
+                    }}
+                  >
+                    {exp.bullets.map((b, bi) => (
+                      <li
+                        key={bi}
+                        style={{
+                          fontSize: "12px",
+                          color: "#4a5568",
+                          lineHeight: 1.6,
+                          display: "flex",
+                          gap: "6px",
+                          marginBottom: "4px",
+                        }}
+                      >
+                        <span style={{ color: ACCENT, flexShrink: 0 }}>•</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Footer */}
-          <div className="mt-8 pt-4 border-t border-gray-200 text-center text-xs text-gray-400">
-            Generated from nickjiang-homepage · {new Date().toISOString().slice(0, 10)}
-          </div>
+        {/* Footer */}
+        <div
+          style={{
+            borderTop: "1px solid #e2e8f0",
+            padding: "12px 32px",
+            textAlign: "center",
+            fontSize: "11px",
+            color: "#8899aa",
+          }}
+        >
+          {lang === "zh"
+            ? `${d.name} · 简历 · ${new Date().toISOString().slice(0, 10)}`
+            : `${d.name} · Resume · ${new Date().toISOString().slice(0, 10)}`}
         </div>
       </div>
     );
   }
 );
 
-/* ── Sub-components ── */
-
-function ColumnHeader({ label }: { label: string }) {
+/* ── Sidebar section title ── */
+function SectionTitle({ label }: { label: string }) {
   return (
-    <div className="text-center mb-4 py-1 bg-gray-100 rounded text-xs tracking-widest uppercase text-gray-500 font-medium">
+    <h2
+      style={{
+        fontSize: "10px",
+        textTransform: "uppercase",
+        letterSpacing: "0.2em",
+        color: "rgba(255,255,255,0.4)",
+        fontWeight: 500,
+        margin: "0 0 8px",
+      }}
+    >
       {label}
-    </div>
+    </h2>
   );
 }
 
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="mb-4">
-      <h3 className="text-xs uppercase tracking-[0.15em] text-gray-400 font-medium mb-2">
-        {title}
-      </h3>
-      {children}
-    </div>
-  );
-}
-
-export default BilingualResumePDF;
+export default ResumeExportTemplate;

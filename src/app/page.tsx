@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import data from "@/data/resume";
-import BilingualResumePDF from "@/components/BilingualResumePDF";
+import ResumeExportTemplate from "@/components/BilingualResumePDF";
 
 const TOGGLE_LABELS: Record<"zh" | "en", string> = {
   zh: "English →",
@@ -62,7 +62,7 @@ export default function HomePage() {
             }
           },
         },
-        jsPDF: { unit: "mm", format: "a3", orientation: "landscape" },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
       };
 
       await html2pdf(el, opt);
@@ -214,7 +214,7 @@ export default function HomePage() {
       </main>
 
       {/* Hidden bilingual resume for PDF export */}
-      <BilingualResumePDF ref={pdfRef} zh={data.zh} en={data.en} />
+      <ResumeExportTemplate ref={pdfRef} data={d} lang={lang} />
     </div>
   );
 }
