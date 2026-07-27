@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? "/nickjiang-homepage" : "";
+const isGitHubPages = process.env.DEPLOY_TARGET === "github-pages";
+const basePath = isGitHubPages ? "/nickjiang-homepage" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
