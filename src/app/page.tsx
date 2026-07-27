@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import data from "@/data/resume";
 
 const TOGGLE_LABELS: Record<"zh" | "en", string> = {
@@ -51,13 +50,10 @@ export default function HomePage() {
           {/* Photo */}
           <div className="flex justify-center mb-8">
             <div className="relative w-32 h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
-              <Image
-                src="/photo.jpg"
+              <img
+                src="photo.jpg"
                 alt={lang === "zh" ? "蒋卢" : "Nick Jiang"}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 128px, 144px"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
           </div>
