@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import data from "@/data/resume";
+import BilingualResumePDF from "@/components/BilingualResumePDF";
 
 const TOGGLE_LABELS: Record<"zh" | "en", string> = {
   zh: "English →",
@@ -27,17 +28,60 @@ type Lang = "zh" | "en";
 
 export default function HomePage() {
   const [lang, setLang] = useState<Lang>("zh");
+  const [exporting, setExporting] = useState(false);
+  const pdfRef = useRef<HTMLDivElement>(null);
 
   const d = data[lang];
   const t = SECTION_TITLES[lang];
+
+  const handleExportPDF = async () => {
+    setExporting(true);
+    try {
+      const html2pdfModule = await import("html2pdf.js");
+      const html2pdf = html2pdfModule.default as (el: HTMLElement, opts?: Record<string, unknown>) => Promise<void>;
+      const el = pdfRef.current;
+      if (!el) return;
+
+      const opt = {
+        margin: 0,
+        filename: `Nick_Jiang_Resume_${new Date().toISOString().slice(0, 10)}.pdf`,
+        image: { type: "jpeg", quality: 0.95 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          onclone: (clonedDoc: Document) => {
+            const tpl = clonedDoc.getElementById("pdf-template");
+            if (tpl) {
+              tpl.style.opacity = "1";
+              tpl.style.position = "relative";
+            }
+          },
+        },
+        jsPDF: { unit: "mm", format: "a3", orientation: "landscape" },
+      };
+
+      await html2pdf(el, opt);
+    } finally {
+      setExporting(false);
+    }
+  };
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen">
       {/* ═══════ Sidebar ═══════ */}
       <aside className="sidebar-bg text-white lg:fixed lg:inset-y-0 lg:left-0 lg:w-[380px] lg:flex lg:flex-col overflow-y-auto shrink-0">
         <div className="px-8 py-10 lg:px-10 lg:py-14 flex flex-col lg:h-full">
-          {/* Language Toggle */}
-          <div className="flex justify-end mb-8 no-print">
+          {/* PDF Export + Language Toggle */}
+          <div className="flex justify-end items-center gap-2 mb-8 no-print">
+            <button
+              onClick={handleExportPDF}
+              disabled={exporting}
+              className="text-xs tracking-wider uppercase border border-white/25 rounded-full px-4 py-1.5
+                         hover:bg-white/10 hover:border-white/40 transition-colors cursor-pointer
+                         disabled:opacity-50 disabled:cursor-wait"
+            >
+              {exporting ? "⏳" : "📄"} PDF
+            </button>
             <button
               onClick={() => setLang(lang === "zh" ? "en" : "zh")}
               className="text-xs tracking-wider uppercase border border-white/25 rounded-full px-4 py-1.5
@@ -163,6 +207,9 @@ export default function HomePage() {
           </footer>
         </div>
       </main>
+
+      {/* Hidden bilingual resume for PDF export */}
+      <BilingualResumePDF ref={pdfRef} zh={data.zh} en={data.en} />
     </div>
   );
 }
