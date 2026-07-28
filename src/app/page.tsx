@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import data from "@/data/resume";
 import ResumeExportTemplate from "@/components/BilingualResumePDF";
 
@@ -34,6 +34,7 @@ type Lang = "zh" | "en";
 export default function HomePage() {
   const [lang, setLang] = useState<Lang>("zh");
   const [exporting, setExporting] = useState(false);
+  const templateRef = useRef<HTMLDivElement>(null);
 
   const d = data[lang];
   const t = SECTION_TITLES[lang];
@@ -41,24 +42,58 @@ export default function HomePage() {
   const handleExportPDF = async () => {
     setExporting(true);
 
-    // 等待 React 渲染完成（模板挂载到 DOM）
-    await new Promise((r) => setTimeout(r, 200));
-
     try {
+      // 等待 React 渲染 + 图片加载完成
+      await new Promise((r) => setTimeout(r, 300));
+
+      // 等待模板中的图片加载完成
+      const img = document.querySelector<HTMLImageElement>("#pdf-template img");
+      if (img && !img.complete) {
+        await new Promise<void>((resolve) => {
+          img.onload = () => resolve();
+          img.onerror = () => resolve(); // 即使加载失败也继续
+        });
+      }
+
       const el = document.getElementById("pdf-template");
-      if (!el) return;
+      if (!el) {
+        console.error("PDF template element not found");
+        return;
+      }
 
       const html2pdf = (await import("html2pdf.js")).default;
       const opt = {
         margin: 0,
         filename: `Nick_Jiang_Resume_${new Date().toISOString().slice(0, 10)}.pdf`,
         image: { type: "jpeg" as const, quality: 0.95 },
-        html2canvas: { scale: 2, useCORS: true },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          logging: true,
+          // onclone: 在 html2canvas 克隆的 DOM 中修复渐变和定位
+          onclone: (clonedDoc: Document) => {
+            const template = clonedDoc.getElementById("pdf-template");
+            if (template) {
+              // 确保模板在克隆文档中可见且正确定位
+              template.style.position = "relative";
+              template.style.display = "block";
+              template.style.visibility = "visible";
+              // 将渐变替换为纯色（html2canvas 不支持渐变）
+              const sidebars = template.querySelectorAll<HTMLElement>('[style*="linear-gradient"]');
+              sidebars.forEach((el) => {
+                el.style.backgroundImage = "none";
+                el.style.backgroundColor = "#162544";
+              });
+            }
+          },
+        },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" as const },
         pagebreak: { mode: ["avoid-all", "css", "legacy"] },
       };
 
       await html2pdf().set(opt).from(el).save();
+    } catch (err) {
+      console.error("PDF export failed:", err);
     } finally {
       setExporting(false);
     }
@@ -197,7 +232,14 @@ export default function HomePage() {
       </main>
 
       {/* ═══ PDF Export Overlay (only rendered during export) ═══ */}
-      {exporting && <ResumeExportTemplate data={d} lang={lang} />}
+      {exporting && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 99999,
+          background: "#808080", overflow: "auto",
+        }}>
+          <ResumeExportTemplate ref={templateRef} data={d} lang={lang} />
+        </div>
+      )}
     </div>
   );
 }
