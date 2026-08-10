@@ -51,7 +51,7 @@ const data: Record<"zh" | "en", ResumeData> = {
         },
         {
           period: "10/2025-11/2025",
-          title: "市场品牌部负责人",
+          title: "品牌市场外部顾问",
           company: "会稽山黄酒",
           bullets: [
             "制定会稽山 1743、气泡黄酒、高端兰亭黄酒三大核心品牌全年战略规划，明确各品牌定位、目标客群、价格带及核心打法，构建 “高端引领、腰部发力、年轻破圈” 的差异化品牌矩阵。",
@@ -161,7 +161,7 @@ const data: Record<"zh" | "en", ResumeData> = {
         },
         {
           period: "10/2025 – 11/2025",
-          title: "Head of Marketing",
+          title: "Brand & Marketing Consultant",
           company: "Kuaijishan yellow wine brewing Tech",
           bullets: [
             "Lead crafting annual plan for Kuaijishan's — repositioning brand Architecture：1743 (mainstream), Sparkling Yellow Rice Wine (youth-oriented innovation), and Lanting (premium)",
