@@ -39,92 +39,90 @@ const data: Record<"zh" | "en", ResumeData> = {
       ],
     experiences: [
         {
-          period: "10/2024-至今",
+          period: "10/2024 – 至今",
           title: "外部品牌顾问",
           company: "外资啤酒品牌",
           bullets: [
-            "为品牌中国区业务增长提供全维度市场品牌战略咨询，落地指导，资源对接，成功实现13%年复合销量增长。",
-            "聚焦经典型拉格核心市场，优化产品组，战略层级确立聚焦3号产品大单品。",
-            "本土化重新定位品牌，实现数字化内容营销，融合本土化线下激活与数字化营销手段。",
-            "指导品牌旺季营销战役，优化线上线下营销资源配比，打造局部样本市场，赋能渠道客户开发。"
+            "操盘外资啤酒品牌中国区业务，实现 13% 年复合销量增长，提供战略咨询、落地指导与资源对接。",
+            "聚焦经典型拉格核心市场，优化产品组合，确立 3 号产品为集团旗舰大单品。",
+            "主导品牌本土化再定位，落地数字化内容营销，打通线下激活与数字化营销链路。",
+            "操盘旺季营销战役，优化线上线下资源配比，打造样板市场，赋能渠道客户开发。"
           ],
         },
         {
-          period: "10/2025-11/2025",
+          period: "10/2025 – 11/2025",
           title: "品牌市场外部顾问",
           company: "会稽山黄酒",
           bullets: [
-            "制定会稽山 1743、气泡黄酒、高端兰亭黄酒三大核心品牌全年战略规划，明确各品牌定位、目标客群、价格带及核心打法，构建 “高端引领、腰部发力、年轻破圈” 的差异化品牌矩阵。",
-            "操盘兰亭黄酒入选法国总统马克龙访华国礼公关事件，成功确立兰亭品牌高端定位，提升经销商签约率50%。"
+            "制定会稽山 1743、气泡黄酒、高端兰亭三大核心品牌全年战略规划，构建“高端引领、腰部发力、年轻破圈”的差异化品牌矩阵。",
+            "操盘兰亭黄酒入选法国总统马克龙访华国礼公关事件，确立兰亭高端定位，经销商签约率提升 50%。"
           ],
         },
         {
-          period: "08/2023 –09/2024",
+          period: "08/2023 – 09/2024",
           title: "市场总监",
           company: "华润雪花华南深圳营销中心",
           bullets: [
-            "主导营销中心喜力/雪花双品牌驱动增长，和渠道营销能力提升。实现年度9%营收增长",
-            "主导营销中心，国际品牌/国内品牌主题战役，打造地方品牌焕新&高端化",
-            "高端化通过强势市场（潮汕市场）新年本土文化植入以及夏季整合营销战役打造，实现品牌销量双位数成长。",
-            "主导雪花勇闯天涯大单品年度沟通策略，通过年轻消费者电竞场景的打造，招募高校人群",
-            "通过老雪品牌&金威地方品牌上市，结合地方政府文旅项目，完成南区高端市场样本市场打造。",
-            "主导渠道营销数字化建设，降本增效，实现市场费用缩减，终端组合覆盖和动销提升，",
-            "针对现饮渠道，优化促销员投入，推行终端服务员数字化激励，实现中高端及高端覆盖8%提升，核心市场单店动销提升15%，成功打造全国数字化标杆市场。",
-            "针对非现饮渠道，通过品牌内容+促销优化+终端销售执行组合拳，提升全品牌15%覆盖提升，动销8%增长"
+            "操盘喜力/国内品牌双轮增长与渠道营销能力建设，实现年度营收增长 9%。",
+            "主导国际/国内品牌主题战役，驱动地方品牌焕新与高端化。",
+            "主导喜力高端化，借潮汕强势市场新年本土文化植入与夏季整合战役，实现销量双位数增长。",
+            "主导雪花勇闯天涯大单品年度沟通策略，切入电竞场景，规模化招募高校人群。",
+            "操盘老雪、金威地方品牌上市，联动地方政府文旅项目，打造南区高端样本市场。",
+            "主导渠道营销数字化建设，降本增效，实现市场费用缩减与终端覆盖、动销提升。",
+            "现饮渠道：优化促销员投入，推行终端服务员数字化激励，中高端及高端覆盖提升 8%，核心市场单店动销提升 15%，打造全国数字化标杆市场。",
+            "非现饮渠道：以“品牌内容+促销优化+终端执行”组合拳，全品牌覆盖提升 15%，动销增长 8%。"
           ],
         },
         {
-          period: "12/2020 –07/2023",
+          period: "12/2020 – 07/2023",
           title: "品牌总监",
           company: "挪瓦咖啡总部",
           bullets: [
-            "从0建立挪瓦咖啡品牌建设&私域媒体策略以及全年创新新品策略。实现：",
-            "从0到1品牌打造“品质现磨，立马在线”定位；品牌强化年轻化视觉全渠道（线上内容+渠道）提升。",
-            "创立咖啡“品质差异化”+“咖啡奶茶化”新品策略，提升下沉市场GMV 提升1000%，",
-            "创立果咖细分类目，通过跨界联名超30个品牌，累计创造品牌超3亿声量，创造健康，运动等多场景消费：如植物基品牌「野生植物」联名推出燕麦拿铁），在饿了么/美团成长率提升155%；联合运动品牌lululemon、Keep、超级猩猩等推广健康场景，深化“运动+咖啡”标签."
+            "从 0 到 1 搭建挪瓦咖啡品牌、私域媒体与全年新品策略。",
+            "打造“品质现磨，立马在线”定位，升级年轻化视觉体系，全渠道渗透线上内容与渠道。",
+            "创立“品质差异化 + 咖啡奶茶化”新品策略，下沉市场 GMV 提升 1000%。",
+            "开创果咖细分类目，跨界联名超 30 个品牌，累计声量超 3 亿；联合 lululemon、Keep、超级猩猩等打造健康运动场景，饿了么/美团增长率提升 155%。"
           ],
         },
         {
-          period: "09/2016 –09/2020",
-          title: "品牌副总监, 哈尔滨啤酒品牌",
-          company: "百威亚太",
+          period: "09/2016 – 09/2020",
+          title: "品牌副总监",
+          company: "哈尔滨啤酒品牌，百威亚太",
           bullets: [
-            "主导哈尔滨啤酒品牌老牌焕新，负责主导哈啤全产品线策略增长,实现品牌中高端市场4年市场份额提升1%",
-            "主导通过“产品重塑+央视传统媒体覆盖+年轻消费者内容打造+渠道动销联动+问题市场上新”组合拳，达成淡爽型大单品哈冰纯两年内止跌回稳，重塑增长。",
-            "发起中高端市场女性市场开发，并主导哈尔滨白啤酒开发上市，通过内容事件，体验营销等整合营销，驱动在哈啤中高端核心市场10%的增长贡献。",
-            "主导旗下高端经典型拉格啤酒产品线新品开发&上市沟通，疫情期间抓住在家饮用场景，迅速调整产品结构，并在产品上新半年完成全年目标，销量达成率120%",
-            "通过启动品牌重新定位聚焦品牌年轻化重塑，四年间年轻化品牌力增长15%，同时成为中国年轻消费者最喜爱啤酒品牌。",
-            "全行业第一次定位打造“街头啤酒”+“街头美食”+“街头文化”的定位。通过消费场景打造，整合IP合作，DTC，线下饮用场景，打通体验生态，赋能品牌增长案例荣获2020年金投赏创意银奖，案例号RC-W-2020-19152",
-            "该后疫情期通过全国各地方政府合作和IP联名，抢占夜市街头新消费饮用场景。通过抖音百大美食KOL探店直播，配合全国5000+渠道门店特色地域互动及全新包装，完成线上线下联动，实现渠道营业额提升60%，声量：4.9亿全媒体曝光，7385万微博话题阅读数，35%为免费声量。"
+            "主导哈啤品牌老牌焕新与全产品线增长，中高端市场份额 4 年提升 1%。",
+            "操盘“产品重塑+央视覆盖+年轻内容+渠道动销+问题市场上新”组合拳，淡爽大单品哈冰纯两年止跌回稳、重回增长。",
+            "发起中高端女性市场，主导哈尔滨白啤开发上市，贡献哈啤中高端核心市场 10% 增长。",
+            "主导高端经典型拉格新品开发上市，抢占居家饮用场景，新品半年完成全年目标，销量达成率 120%。",
+            "启动品牌年轻化再定位，年轻化品牌力 4 年增长 15%，成为中国年轻消费者最喜爱啤酒品牌；首创“街头啤酒+街头美食+街头文化”定位，打通体验生态，获 2020 金投赏创意银奖（RC-W-2020-19152）。",
+            "后疫情期间联动地方政府与 IP，抢占夜市街头饮用场景；抖音百大美食 KOL 探店直播 + 5000+ 渠道门店联动，渠道营业额提升 60%，声量 4.9 亿曝光、7385 万微博阅读、35% 免费声量。"
           ],
         },
         {
-          period: "01/2012 –08/2016",
+          period: "01/2012 – 08/2016",
           title: "品牌经理",
-          company: "地方性品牌, 百威英博总部",
+          company: "区域性品牌，百威英博总部",
           bullets: [
-            "负责全国扩张市场15个收购区域品牌+哈尔滨品牌&商务销售。(占20%公司体量)",
-            "首次启动全国地方性品牌“联合品牌”+区域品牌新品策略，该策略获得百威英博内部最佳实践，实现：",
-            "驱动当地哈尔滨品牌+哈尔滨品牌销量扭转以及从区域品牌至哈尔滨品牌的切换。",
-            "哈尔滨知晓度年复合增长率29.4%（全国平均13.2%）。"
+            "统筹全国扩张市场 15 个收购区域性品牌与哈尔滨品牌商务销售（占公司 20% 体量）。",
+            "首创全国区域性品牌“联合品牌”+区域新品策略，获百威英博内部最佳实践。",
+            "驱动哈尔滨品牌与区域品牌销量扭转及切换，哈尔滨知晓度 CAGR 29.4%（全国平均 13.2%）。"
           ],
         },
         {
-          period: "05/2009—12/2011",
+          period: "05/2009 – 12/2011",
           title: "渠道营销副经理",
           company: "百威英博华东事业部",
           bullets: [
-            "启动建立分品牌全售点执行标准，开发渠道项目投入计划，帮助改善渠道执行质量，提升售点份额。",
-            "试点哈尔滨，百威关键渠道（中餐，夜店KTV）渠道热点区域创新物料开发，帮助购买转化率提升。创建售点物料管理体系，执行提升售点销量20%。"
+            "建立分品牌全售点执行标准与渠道项目投入计划，改善渠道执行质量，提升售点份额。",
+            "试点哈尔滨、百威关键渠道（中餐/夜店/KTV）创新物料，提升购买转化率；搭建售点物料体系，推动售点销量提升 20%。"
           ],
         },
         {
-          period: "11/2007—05/2009",
+          period: "11/2007 – 05/2009",
           title: "管理培训生",
           company: "TESCO 中国",
           bullets: [
-            "非食品品来货架陈列空间优化和库存管理，提升营业额和每平方产出。",
-            "协助制定和执行品类全年促销排期，提升品类毛利。"
+            "优化非食品品类货架陈列与库存管理，提升营业额与每平方产出。",
+            "制定并执行品类全年促销排期，提升品类毛利。"
           ],
         }
     ],
@@ -148,92 +146,90 @@ const data: Record<"zh" | "en", ResumeData> = {
       ],
     experiences: [
         {
-          period: "10/2024 –present",
+          period: "10/2024 – Present",
           title: "Brand & Marketing Consultant",
           company: "An Imported Beer Brand",
           bullets: [
-            "Crafting holistic marketing strategic consulting, on-site implementation guidance and resource connection for the brand’s business growth in China, driving 13% sales growth successfully.",
-            "Focused on the core market of classic lager, optimized the product portfolio, and strategically identified Product No.3 as the flagship SKU at the corporate level in China",
-            "Repositioning the brand and rolled out digital content marketing, integrating localized offline activation with digital marketing initiatives.",
-            "lead marketing campaigns development in peak season , optimized the allocation of online and offline marketing resources, built regional role model markets, and empowered the development of channel partners.",
-            "Aligned with the high-end development trend of the beer industry, developed customized digital marketing tools for on-trade and off-trade channels in core cities, boosting the overall sales velocity of the brand."
+            "Drove 13% annual compound sales growth for an imported beer brand in China, providing strategic consulting, on-site guidance and resource connection.",
+            "Focused on the core classic lager market, optimized the product portfolio, and established Product No.3 as the group's flagship SKU.",
+            "Led brand localization and repositioning, launched digital content marketing, and connected offline activation with digital marketing.",
+            "Ran peak-season marketing campaigns, optimized online/offline resource allocation, built model markets, and empowered channel customer development."
           ],
         },
         {
           period: "10/2025 – 11/2025",
           title: "Brand & Marketing Consultant",
-          company: "Kuaijishan yellow wine brewing Tech",
+          company: "Kuaijishan Shaoxing Wine Co., Ltd.",
           bullets: [
-            "Lead crafting annual plan for Kuaijishan's — repositioning brand Architecture：1743 (mainstream), Sparkling Yellow Rice Wine (youth-oriented innovation), and Lanting (premium)",
-            "successfully secured Lanting as premium image among the high-end client, by seeding the product as the state gift presented to French President Emmanuel Macron during his official state visit to China.  Increased distributor sign-up rate by 50%."
+            "Built the annual strategic plan for Kuaijishan's three core brands (1743, Sparkling Huangjiu, premium Lanting), shaping a differentiated \"premium-led, mid-tier growth, youth breakthrough\" brand matrix.",
+            "Led Lanting Huangjiu's selection as the state gift for French President Emmanuel Macron's China visit, establishing Lanting's premium positioning and lifting the distributor sign-up rate by 50%."
           ],
         },
         {
-          period: "08/2023 –09/2024",
-          title: "MKT DIRECTOR",
-          company: "China Resource beer South Center",
+          period: "08/2023 – 09/2024",
+          title: "Marketing Director",
+          company: "China Resources Beer, South China Marketing Center",
           bullets: [
-            "Lead the portfolio premiumization and channel digital transformation",
-            "Leading the international/domestic brand brand campaign development, regional brand rejuvenation projection",
-            "Heineken: achieved double-digit volume growth through the CNY and football campaign development in stronghold &attacking market (Chaoshan & Shenzhen)",
-            "SNOW: fulfill CORE+ portfolio address via SNOW classic and Kingway new product launch.",
-            "Established trade marketing digitization to drive brand penetration and volume uplift in Shenzhen, in which is set up as national best practice market."
+            "Ran Heineken/domestic brand growth and channel marketing capability building, achieving 9% annual revenue growth.",
+            "Led international/domestic brand campaigns, driving regional brand rejuvenation and premiumization.",
+            "Led Heineken premiumization via Chinese New Year cultural integration in the stronghold Chaoshan market and summer integrated campaigns, achieving double-digit volume growth.",
+            "Led the annual communication strategy for the SNOW \"Brave the World\" flagship SKU, tapping esports scenarios to recruit college consumers at scale.",
+            "Launched the Laoxue and Kingway regional brands, partnering with local government cultural tourism projects to build a high-end model market in South China.",
+            "Led channel marketing digitization to cut costs and improve efficiency, reducing market spend and improving terminal coverage and sell-through.",
+            "On-trade: optimized promoter investment and launched digital incentives for terminal staff, lifting mid-to-high-end and high-end coverage by 8% and core-market per-store sell-through by 15%, building a national digital benchmark market.",
+            "Off-trade: combined brand content, promotion optimization and terminal execution, lifting all-brand coverage by 15% and sell-through growth by 8%."
           ],
         },
         {
-          period: "12/2020 –07/2023",
-          title: "BRAND DIRECTOR",
+          period: "12/2020 – 07/2023",
+          title: "Brand Director",
           company: "NOWWA Coffee",
           bullets: [
-            "Responsible for brand positioning, communication and DTC, innovation, achieved: Established brand positioning from zero to one with full year communication plan, developed the product centric business model. Rejuvenated brand VI system",
-            "Established portfolio optimization and innovation pipeline, innovation GMV weighting increased over 1000%.",
-            "Generating brand buzz over 300M by over 30 cross-over cobranding which creating content and drinking occasion"
+            "Built NOWWA Coffee's brand system, private-domain media and annual new-product strategy from zero to one.",
+            "Established the \"Fresh-brewed, Ready On-the-go\" positioning and upgraded the youthful visual identity across online content and channels.",
+            "Created the \"quality differentiation + coffee milk-tea-ization\" new-product strategy, driving 1000% GMV growth in lower-tier markets.",
+            "Created the fruit-coffee sub-category, collaborating with 30+ brands to generate 300M+ brand buzz; partnered with lululemon, Keep and SuperMonkey to build health/sports occasions, lifting Ele.me/Meituan growth by 155%."
           ],
         },
         {
-          period: "09/2016 –09/2020",
-          title: "BRAND ASSOCIATE DIRECTOR",
-          company: "Harbin Brand, APAC",
+          period: "09/2016 – 09/2020",
+          title: "Brand Associate Director",
+          company: "Harbin Beer Brand, Budweiser APAC",
           bullets: [
-            "Drove ABI Core+ Classic segment national expansion to keep gaining share in past 3 years. Established Harbin new experiential model for equity building, effectively driving online to offline synergy.",
-            "Led Harbin Core+ Classic segment portfolio strategy and innovation, achieved FY GMV by 1st half year and 120% segment trading up.",
-            "Established HAPI street brand, Deep dive in street music and fashion. Developed innovative brand integrated experiential evolution with drinking occasion, owned media, DTC, which leverage brand building and achieved ：",
-            "No 1 social buzz in 2019 summer, 240 M social buzz in 4 weeks.",
-            "Over 340% Weibo engagement VS benchmark.",
-            "Case ”HAPI BEERWEAR” ‘RC-W-202019152’  won the silver prize of 2020 ROI creative festival.",
-            "Led “China No. 1 Skewer” campaign with street food bonding centric communication. Quickly developed Harbin street stall platform in 58 cities after COVID-19, owned new LDA drinking occasion with local packaging launching by KOL live streaming on trade, achieved:",
-            "Voice：490M media reaching, over 73 M weibo buzz with 35% earned buzz.",
-            "Volume：MTD growth by 18.8% in June, 60% channel volume uplift.",
-            "Case “China No.1 skewer” RC-W-2020-19695 won the silver prize of 2002 ROI creative festival."
+            "Led Harbin Beer's brand rejuvenation and full-portfolio growth, lifting mid-to-high-end market share by 1% over 4 years.",
+            "Ran the \"product reshaping + CCTV coverage + youth content + channel sell-through + problem-market relaunch\" playbook, turning around the light-flavor flagship Habin-chun within two years.",
+            "Initiated the mid-to-high-end female market and led Harbin White Beer's launch, contributing 10% growth in Harbin's core mid-to-high-end market.",
+            "Led the premium classic lager new-product launch, seizing the at-home occasion during the pandemic to hit the full-year target in six months with a 120% achievement rate.",
+            "Led brand youth repositioning, lifting youthful brand power by 15% over 4 years and becoming the most-loved beer brand among young Chinese consumers; pioneered the industry-first \"Street Beer + Street Food + Street Culture\" positioning and won the 2020 ROI Creative Festival Silver Award (RC-W-2020-19152).",
+            "Post-pandemic, partnered with local governments and IPs to capture the night-market street occasion; via 100 Douyin food KOL livestreams and 5000+ store activations, lifted channel revenue by 60% and generated 490M media exposure, 73.85M Weibo reads and 35% earned buzz."
           ],
         },
         {
-          period: "01/2012 –08/2016",
-          title: "BRAND MGR",
-          company: "REGIONAL BRAND, APAC CHINA",
+          period: "01/2012 – 08/2016",
+          title: "Brand Manager",
+          company: "Regional Brands, AB InBev HQ",
           bullets: [
-            "Responsible for 14 regional brands and Harbin brand growth of commercial and brand in expansion market. (20% of ABI total volume)",
-            "Successfully Piloted cobrand campaign with local innovation nationwide, won best practice in ABI, achieved:",
-            "Driving Harbin + regional brand volume volume turn around, Successfully transferred local brand volume to HRB.",
-            "Helped HRB awareness growing (CAGR: 29.4%) faster than non-cobrand area (13.2%)."
+            "Managed commercial sales of 15 acquired regional brands and Harbin Beer in national expansion markets (20% of company volume).",
+            "Pioneered the national \"co-branding\" + regional new-product strategy, winning AB InBev internal best practice.",
+            "Drove Harbin and regional brand volume turnaround and migration; Harbin awareness grew at a 29.4% CAGR (vs. 13.2% national average)."
           ],
         },
         {
-          period: "05/2009—12/2011",
-          title: "ASSCOIATE TRADE MARKETING MANGER",
-          company: "BU, ABI",
+          period: "05/2009 – 12/2011",
+          title: "Associate Trade Marketing Manager",
+          company: "AB InBev East China BU",
           bullets: [
-            "Piloted and Established POS Execution standard, which cover all Channel & brand (exclude KA), helped to improve POS availability and visibility",
-            "Piloted and lead POSM innovation project in BUE, develop 2 new POSM for nightclub and Chinese restaurant channel, which help to stimulate and drive volume uplift by 20%."
+            "Built brand-specific POS execution standards and channel project investment plans, improving channel execution quality and outlet share.",
+            "Piloted innovative POSM in key Harbin/Budweiser channels (Chinese restaurant, nightclub, KTV), boosting purchase conversion; built a POSM system lifting outlet sales by 20%."
           ],
         },
         {
-          period: "11/2007—05/2009",
-          title: "MANAGEMENT TRAINEE",
-          company: "TESCO CHINA",
+          period: "11/2007 – 05/2009",
+          title: "Management Trainee",
+          company: "TESCO China",
           bullets: [
-            "Under the direction of the merchandising Manager, conducted display space optimization by business analysis production and inventory.",
-            "Collaborated with outlets to improve turnover and margin per space."
+            "Optimized non-food shelf display and inventory management, improving turnover and per-square-meter output.",
+            "Built and executed the category's annual promotion calendar, improving category gross margin."
           ],
         }
     ],
