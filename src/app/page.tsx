@@ -18,13 +18,13 @@ const SECTION_TITLES: Record<"zh" | "en", Record<string, string>> = {
   zh: {
     contact: "联系方式",
     education: "教育背景",
-    about: "关于我",
+    about: "专业资质",
     experience: "工作经历",
   },
   en: {
     contact: "Contact",
     education: "Education",
-    about: "About Me",
+    about: "Certifications",
     experience: "Work Experience",
   },
 };
@@ -169,7 +169,7 @@ export default function HomePage() {
             <p className="text-sm text-white/70">{d.education.school}</p>
           </section>
 
-          {/* About Me */}
+          {/* Certifications */}
           <section className="lg:mt-auto">
             <h2 className="text-xs uppercase tracking-[0.2em] text-white/40 font-medium mb-3">
               {t.about}

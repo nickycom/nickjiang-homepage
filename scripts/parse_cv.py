@@ -34,7 +34,6 @@ META_ZH: dict[str, Any] = {
         "school": "上海大学",
     },
     "about": [
-        "MBTI 人格类型: ENTJ",
         "国际精酿啤酒一级认证 (Cicerone)",
         "国际葡萄酒&烈酒二级认证 (WSET Level 2)",
     ],
@@ -47,12 +46,11 @@ META_EN: dict[str, Any] = {
     "email": "nickycom@msn.com",
     "education": {
         "period": "2003 – 2007",
-        "degree": "Bachelor of Business",
+        "degree": "Bachelor of Management",
         "major": "Information Management & Systems",
         "school": "Shanghai University",
     },
     "about": [
-        "MBTI: ENTJ",
         "Cicerone Global Beer Level 1 Certification",
         "WSET Level 2 Certification (Wine & Spirits)",
     ],

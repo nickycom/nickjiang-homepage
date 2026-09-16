@@ -9,8 +9,8 @@ type Props = {
 };
 
 const LABELS: Record<"zh" | "en", Record<string, string>> = {
-  zh: { contact: "联系方式", education: "教育背景", about: "关于我", experience: "工作经历" },
-  en: { contact: "Contact", education: "Education", about: "About Me", experience: "Work Experience" },
+  zh: { contact: "联系方式", education: "教育背景", about: "专业资质", experience: "工作经历" },
+  en: { contact: "Contact", education: "Education", about: "Certifications", experience: "Work Experience" },
 };
 
 // 渐变背景色：用 backgroundImage + backgroundColor 分离写法
